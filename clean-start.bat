@@ -1,0 +1,9 @@
+@echo off
+echo Stopping all Node.js and Next.js processes...
+taskkill /F /IM node.exe /T >nul 2>&1
+echo Cleaning build cache...
+if exist .next rmdir /s /q .next
+echo Regenerating Prisma Client...
+npx prisma generate
+echo Platform Cleared!
+echo Now run: npm run dev -- -p 3005
