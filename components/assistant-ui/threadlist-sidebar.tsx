@@ -12,9 +12,16 @@ import {
 } from "@/components/ui/sidebar";
 import { ThreadList } from "@/components/assistant-ui/thread-list";
 
+interface ThreadListSidebarProps extends React.ComponentProps<typeof Sidebar> {
+  onSelectThread: (id: string) => void;
+  currentThreadId: string | null;
+}
+
 export function ThreadListSidebar({
+  onSelectThread,
+  currentThreadId,
   ...props
-}: React.ComponentProps<typeof Sidebar>) {
+}: ThreadListSidebarProps) {
   return (
     <Sidebar {...props}>
       {/* Sidebar Header — Quantum AI Brand */}
@@ -78,8 +85,8 @@ export function ThreadListSidebar({
       </SidebarHeader>
 
       {/* Thread List */}
-      <SidebarContent className="px-2">
-        <ThreadList />
+      <SidebarContent className="px-2 overflow-y-auto">
+        <ThreadList onSelectThread={onSelectThread} currentThreadId={currentThreadId} />
       </SidebarContent>
 
       <SidebarRail />

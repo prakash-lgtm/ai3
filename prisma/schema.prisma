@@ -7,13 +7,16 @@ datasource db {
 }
 
 model User {
-  id        String    @id @default(cuid())
-  email     String    @unique
-  username  String?
-  password  String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  threads   Thread[]
+  id         String    @id @default(cuid())
+  email      String    @unique
+  username   String?
+  password   String?
+  phone      String?   @unique
+  otp        String?
+  otpExpires DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  threads    Thread[]
 }
 
 model Thread {
