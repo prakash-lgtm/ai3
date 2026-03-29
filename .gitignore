@@ -24,3 +24,5 @@ implementation_plan.md
 .agents/
 
 .vercel
+
+/lib/generated/prisma
